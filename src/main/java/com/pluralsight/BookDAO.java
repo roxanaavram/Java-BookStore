@@ -90,4 +90,17 @@ public class BookDAO {
 
         return false;
     }
+	
+	public void deleteBook(int id){
+		String deleteBookId = "DELETE FROM book WHERE id=?";
+		try{
+			
+		PreparedStatement prepStatement = jdbcConnection.prepareStatement(deleteBookId);
+		prepStatement.setInt(1,id);
+		prepStatement.executeUpdate();
+		prepStatement.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 }
